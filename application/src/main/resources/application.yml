@@ -4,11 +4,20 @@ mybatis:
 server:
   port: 8082
 
+worker:
+  id: 1
+
+logging:
+  level:
+    root: info
+
 spring:
   datasource:
     password: ZABzueZ3
-    url: jdbc:mysql://sh-cynosdbmysql-grp-knpl8owi.sql.tencentcdb.com:21104/springboot_demo?serverTimezone=GMT%2B8
+    url: jdbc:mysql://sh-cynosdbmysql-grp-knpl8owi.sql.tencentcdb.com:21104/final?serverTimezone=GMT%2B8
     username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jackson:
     default-property-inclusion: non_null
@@ -19,3 +28,4 @@ spring:
     host: 182.92.185.137
     password: 423414a.
     port: 6379
+
