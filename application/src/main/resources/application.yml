@@ -1,3 +1,4 @@
+
 mybatis:
   mapper-locations: classpath:com/geekgame/demo/dao/*.xml
 
@@ -28,4 +29,8 @@ spring:
     host: 182.92.185.137
     password: 423414a.
     port: 6379
+
+
+
+
 
