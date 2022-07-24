@@ -5,13 +5,16 @@ import com.geekgame.demo.model.Result;
 import com.geekgame.demo.model.User;
 import com.geekgame.demo.model.UserLoginInfo;
 import com.geekgame.demo.service.UserService;
+import com.google.code.kaptcha.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 
 
@@ -29,8 +32,22 @@ public class UserAPI {
 
     @PostMapping("/api/user/login")
     @ResponseBody
-    public Result<User> login(String userName, String pwd, HttpServletRequest request) {
-        Result<User> result = userService.login(userName, pwd);
+    public Result<User> login(String userName, String pwd, String code, HttpServletRequest request) {
+        Result<User> result = new Result<>();
+        if (code == null) {
+            result.setCode("604");
+            result.setMessage("验证码不能为空");
+            return result;
+        } else {
+            String captchaId = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+            if (!code.equals(captchaId)) {
+                result.setCode("605");
+                result.setMessage("验证码不正确");
+                return result;
+            }
+        }
+
+        result = userService.login(userName, pwd);
 
         if (result.isSuccess()) {
             UserLoginInfo loginInfo = new UserLoginInfo();
@@ -51,6 +68,5 @@ public class UserAPI {
         result.setSuccess(true);
         return result;
     }
-
 
 }

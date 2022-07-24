@@ -22,5 +22,11 @@
             <groupId>com.geekgame.shared</groupId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- kaptcha  -->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
     </dependencies>
 </project>
