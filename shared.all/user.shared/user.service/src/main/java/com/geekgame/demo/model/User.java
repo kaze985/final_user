@@ -1,8 +1,7 @@
 package com.geekgame.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.NullSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,7 +17,7 @@ public class User implements Serializable {
 
     private String userName;
 
-    @JsonSerialize(using = NullSerializer.class)
+    @JsonIgnore
     private String password;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
