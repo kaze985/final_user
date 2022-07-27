@@ -64,11 +64,6 @@
 				<artifactId>commons-codec</artifactId>
 				<version>1.14</version>
 			</dependency>
-			<dependency>
-				<groupId>org.redisson</groupId>
-				<artifactId>redisson-spring-boot-starter</artifactId>
-				<version>3.13.0</version>
-			</dependency>
 			<!-- kaptcha  -->
 			<dependency>
 				<groupId>com.github.penggle</groupId>
