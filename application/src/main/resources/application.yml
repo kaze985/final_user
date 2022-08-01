@@ -5,6 +5,7 @@ mybatis:
 server:
   port: 8082
 
+
 worker:
   id: 1
 
