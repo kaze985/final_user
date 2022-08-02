@@ -6,6 +6,7 @@ import com.geekgame.demo.model.User;
 import com.geekgame.demo.model.UserLoginInfo;
 import com.geekgame.demo.service.UserService;
 import com.google.code.kaptcha.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 
 
 @Controller
+@Slf4j
 public class UserAPI {
 
     @Autowired
@@ -37,8 +39,8 @@ public class UserAPI {
             result.setMessage("验证码不能为空");
             return result;
         } else {
-            String captchaId = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
-            if (!code.equals(captchaId)) {
+            String kaptchaId = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+            if (!code.equals(kaptchaId)) {
                 result.setCode("605");
                 result.setMessage("验证码不正确");
                 return result;
