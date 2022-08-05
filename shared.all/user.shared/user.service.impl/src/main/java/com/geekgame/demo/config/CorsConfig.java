@@ -9,6 +9,9 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.time.Duration;
 
+/**
+ * 跨域配置类
+ */
 @Configuration
 public class CorsConfig {
 

@@ -6,9 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- * SnowFlake 算法修改
- * 0 - 0000000000 00 - 0000000000 0000000000 0000000000 000000000 - 0000 - 00000000
- * 符号位 -12位年月位(表示yyMM,最大4096,即可用至2040年)-39位时间戳 （可用17年，即可用至2035年）-4位机器ID(最大16，即可部署16个节点)-8位序列号(z最大256)
+ * 雪花id生成器
  */
 @Component
 public class SnowflakeIdGenerator {

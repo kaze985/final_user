@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+/**
+ * Kaptcha配置类
+ */
 @Configuration
 public class KaptchaConfig {
     @Bean

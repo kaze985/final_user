@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 
+/**
+ * 生成验证码
+ */
 @Controller
 @Slf4j
 public class CreateCode {

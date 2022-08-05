@@ -24,12 +24,26 @@ public class UserAPI {
     @Autowired
     private UserService userService;
 
+    /**
+     * 注册
+     * @param userName
+     * @param pwd
+     * @return
+     */
     @PostMapping("/api/user/reg")
     @ResponseBody
     public Result<User> reg(String userName, String pwd) {
         return userService.register(userName, pwd);
     }
 
+    /**
+     * 登录
+     * @param userName
+     * @param pwd
+     * @param code
+     * @param request
+     * @return
+     */
     @PostMapping("/api/user/login")
     @ResponseBody
     public Result<User> login(String userName, String pwd, String code, HttpServletRequest request) {
@@ -60,6 +74,11 @@ public class UserAPI {
         return result;
     }
 
+    /**
+     * 登出
+     * @param request
+     * @return
+     */
     @GetMapping("/api/user/logout")
     @ResponseBody
     public Result logout(HttpServletRequest request) {
