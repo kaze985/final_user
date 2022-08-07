@@ -13,7 +13,7 @@ import java.time.Duration;
  * 跨域配置类
  */
 @Configuration
-public class CorsConfig {
+public class CorsConfig  {
 
     @Bean
     public FilterRegistrationBean corsFilter() {

@@ -16,10 +16,10 @@ public class SpringHttpSessionConfig {
     public CookieSerializer cookieSerializer() {
         DefaultCookieSerializer serializer = new DefaultCookieSerializer();
         serializer.setCookieName("JSESSIONID");
-        // 用正则表达式配置匹配的域名，可以兼容 localhost、127.0.0.1 等各种场景
-        serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
+        serializer.setDomainName("final.lppnb.top");
         serializer.setCookiePath("/");
         serializer.setUseHttpOnlyCookie(false);
+        serializer.setSameSite(null);
         // 最大生命周期的单位是秒
         serializer.setCookieMaxAge(24 * 60 * 60);
         return serializer;
