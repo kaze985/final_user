@@ -1,0 +1,26 @@
+project:
+  name: start
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+
+server:
+  port: 8082
+
+spring:
+  datasource:
+    password: ZABzueZ3
+    url: jdbc:mysql://sh-cynosdbmysql-grp-knpl8owi.sql.tencentcdb.com:21104/final?serverTimezone=GMT%2B8
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+
+  redis:
+    host: 182.92.185.137
+    password: 423414a.
+    port: 6379
