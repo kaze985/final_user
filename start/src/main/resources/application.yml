@@ -1,17 +1,16 @@
-project:
-  name: start
+
 
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
 
 server:
-  port: 8082
+  port: 8080
 
 spring:
   datasource:
-    password: ZABzueZ3
-    url: jdbc:mysql://sh-cynosdbmysql-grp-knpl8owi.sql.tencentcdb.com:21104/final?serverTimezone=GMT%2B8
-    username: root
+    password: FAST707e
+    url: jdbc:mysql://rm-bp12g7e0k6w828uc6bo.mysql.rds.aliyuncs.com:3306/final?serverTimezone=GMT%2B8
+    username: kaze
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
 

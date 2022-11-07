@@ -47,14 +47,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Response login(String userName, String pwd) {
+    public SingleResponse<UserDTO> login(String userName, String pwd) {
 
         UserGetQry userGetQry = new UserGetQry();
         userGetQry.setUserName(userName);
         SingleResponse<UserDTO> result = userGetQryExe.execute(userGetQry);
 
         if (result == null) {
-            return Response.buildFailure("603", "用户名不存在");
+            return SingleResponse.buildFailure("603", "用户名不存在");
         }
 
         // 密码加自定义盐值，确保密码安全
@@ -63,10 +63,10 @@ public class UserServiceImpl implements UserService {
         String md5Pwd = SecureUtil.md5(saltPwd).toUpperCase();
 
         if (!StringUtils.equals(md5Pwd, result.getData().getPassword())) {
-            return Response.buildFailure("604", "密码不对");
+            return SingleResponse.buildFailure("604", "密码不对");
         }
 
-        return Response.buildSuccess();
+        return result;
     }
 
 }

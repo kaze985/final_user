@@ -2,6 +2,8 @@ package com.lppnb.api;
 
 
 import com.alibaba.cola.dto.Response;
+import com.alibaba.cola.dto.SingleResponse;
+import com.lppnb.dto.data.UserDTO;
 
 public interface UserService {
 
@@ -13,6 +15,6 @@ public interface UserService {
     /**
      * 执行登录逻辑
      */
-    Response login(String userName, String pwd);
+    SingleResponse<UserDTO> login(String userName, String pwd);
 
 }

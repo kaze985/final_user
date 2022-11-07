@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  */
 @Data
 public class UserLoginInfo extends DTO {
-
+    private String id;
     private String userName;
 
     private LocalDateTime loginTime;

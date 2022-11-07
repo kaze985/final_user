@@ -2,8 +2,10 @@ package com.lppnb.web;
 
 
 import com.alibaba.cola.dto.Response;
+import com.alibaba.cola.dto.SingleResponse;
 import com.google.code.kaptcha.Constants;
 import com.lppnb.api.UserService;
+import com.lppnb.dto.data.UserDTO;
 import com.lppnb.dto.data.UserLoginInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -60,16 +62,17 @@ public class UserController {
             }
         }
 
-        Response result = userService.login(userName, pwd);
+        SingleResponse<UserDTO> result = userService.login(userName, pwd);
 
         if (result.isSuccess()) {
             UserLoginInfo loginInfo = new UserLoginInfo();
+            loginInfo.setId(result.getData().getId());
             loginInfo.setUserName(userName);
             loginInfo.setLoginTime(LocalDateTime.now());
             request.getSession().setAttribute("loginInfo",loginInfo);
         }
 
-        return result;
+        return Response.buildSuccess();
     }
 
     /**
