@@ -7,12 +7,16 @@ import com.google.code.kaptcha.Constants;
 import com.lppnb.api.UserService;
 import com.lppnb.dto.data.UserDTO;
 import com.lppnb.dto.data.UserLoginInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +25,7 @@ import java.time.LocalDateTime;
 
 @Controller
 @Slf4j
+@Api(tags = "UserController")
 public class UserController {
 
     @Autowired
@@ -29,9 +34,10 @@ public class UserController {
     /**
      * 注册
      */
+    @ApiOperation("注册")
     @PostMapping("/api/user/reg")
     @ResponseBody
-    public Response reg(String userName, String pwd) {
+    public Response reg(@RequestParam @ApiParam("用户名") String userName, @RequestParam @ApiParam("密码") String pwd) {
         if (StringUtils.isEmpty(userName)) {
             return Response.buildFailure("600", "用户名不能为空");
         }
@@ -44,9 +50,10 @@ public class UserController {
     /**
      * 登录
      */
+    @ApiOperation("登录")
     @PostMapping("/api/user/login")
     @ResponseBody
-    public Response login(String userName, String pwd, String code, HttpServletRequest request) {
+    public Response login(@RequestParam @ApiParam("用户名") String userName, @RequestParam @ApiParam("密码") String pwd, @RequestParam @ApiParam("验证码") String code, HttpServletRequest request) {
         if (StringUtils.isEmpty(userName)) {
             return Response.buildFailure("600", "用户名不能为空");
         }
@@ -78,6 +85,7 @@ public class UserController {
     /**
      * 登出
      */
+    @ApiOperation("登出")
     @GetMapping("/api/user/logout")
     @ResponseBody
     public Response logout(HttpServletRequest request) {

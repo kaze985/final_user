@@ -23,3 +23,7 @@ spring:
     host: 182.92.185.137
     password: 423414a.
     port: 6379
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

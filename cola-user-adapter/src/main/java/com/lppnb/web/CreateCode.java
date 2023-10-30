@@ -2,6 +2,8 @@ package com.lppnb.web;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,13 @@ import java.io.ByteArrayOutputStream;
  */
 @Controller
 @Slf4j
+@Api(tags = "CreateCode")
 public class CreateCode {
 
     @Autowired
     private DefaultKaptcha defaultKaptcha;
 
+    @ApiOperation("获取验证码")
     @GetMapping("/createCode")
     public void createCode(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception{
         byte[] captchaChallengeAsJpeg;
